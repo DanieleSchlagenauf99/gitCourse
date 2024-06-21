@@ -22,6 +22,7 @@
 
 \chapter{Git}
 
+
 \paragraph{Exam notes}
 The exam is formed by:
 \begin{itemize}
@@ -45,12 +46,28 @@ Git is one of the most famous VCS, do not work well with too large file, binary 
 Git can be use both \textbf{CLI} (Command Line Interface) or \textbf{GUI} (Graphical User Interface), the first allow a most powerful but complex approach while the second is more understandable by humans beings but limited option and not flexible as CLI.
 
 The main structure is: 
-\begin{figure}[H]
+
+\begin{figure} [H]
     \centering
-    \includegraphics[scale=0.5]{img/git1.jpg}
-    \caption{Structure of git}
-    \label{git_str}
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[scale=0.45]{img/git1.jpg}
+        \caption{Git structure}
+        \label{git_str}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.8]{img/conflict.jpg}
+        \caption{Conflict case, in merging}
+        \label{conf}
+    \end{minipage}   
 \end{figure}
+
+
+
+
+
 Where the \textit{working directory} is the local folder where the file are stored and modified, the \textit{staging area} is a middle step to compute before the commit abd stay on the local machine while with a commit is possible to store the new files on the \textit{Git repository}
 
 \subsection{Command}
@@ -58,8 +75,8 @@ The main CLI command will be show, in particular the blue ones will refer to the
 \begin{itemize}
     \item \textbf{git init}: start the filder to git 
     \item \textbf{git add}: Command need to pass from working dir to staging area, after a space is possible to add the $<filename>$ to add, with extension, or with the . add all the changes.
-    \item \textbf{git commit -m "msg"}: create a commit with the comment on what is change inside
     \item \textbf{git push}: commit the file on Github (after setting show in \autoref{GitHub})
+    \item \textbf{git commit -m "msg"}: create a commit with the comment on what is change inside
     \item  \textbf{git mv $<old.txt> <newfile.txt>$}: allow renomination of file without lose the track of the changes
     \item \textbf{git reset}: Allow to recover an add file (reverse of add!)
     \item  \textbf{git diff}: compute the difference between working and stage area, should need a proper IDE to be human understandable. (--staged: diff between stage and commit)
@@ -69,7 +86,7 @@ The main CLI command will be show, in particular the blue ones will refer to the
      \item \textcolor{blue}{git push origin feature}: commit only the branch not the main
      \item \textcolor{blue}{git switch \textless branchName \textgreater}: allow to switch from the branch to the one specified
      \item \textcolor{blue}{git merge \textless branchName \textgreater}: from the directory of the branch that should be receive the merge (main mainly), specify which branch merge \newline
-     \textbf{Possible conflict}: some conflict could happen when try to merge a file that is modified in both branches. The idea is work on files only in the external branch not touch the one on the internal ones and allow a single person/group on each file hence known what was modified.
+     \textbf{Possible conflict}: some conflict could happen when try to merge a file that is modified in both branches, vim result in \autoref{conf}. The idea is work on files only in the external branch not touch the one on the internal ones and allow a single person/group on each file hence known what was modified.
      \item \textcolor{red}{git config --global alias}: create a routine, that can be run instead of a very large command
     \item \textcolor{red}{git commit --amend}: delete the last commit, use when forget a file, or commit something wrong. If add \textbf{-m "new\_msg} change only the commit message, for example for type error
     \item \textcolor{red}{git revert \textless commit \textgreater}: delete the commit specify and commit the actual one 
@@ -84,21 +101,25 @@ To use Git at an int level, usually are done dy the use of \textbf{branches}. Th
 Some examples shows how use cleverly the branches: the main (or master) stay clean, and create a branch to developing new part which can also be branched 
 to develop new feature that will then merge on the branch and then in the main, as seen in \autoref{branch} 
 
+
 \begin{figure} [H]
     \centering
     \begin{minipage}{0.4\textwidth}
         \centering
-        \includegraphics*[scale=0.35]{img/branches.jpg}
-        \caption{Example of brach}
-        \label{branch}
+        \includegraphics[scale=0.32]{img/branches.jpg}
     \end{minipage}
+    \hfill
     \begin{minipage}{0.4\textwidth}
         \centering
-        \includegraphics*[scale=0.35]{img/branches2.jpg}
-        \caption{AnothreExample of brach}
-        \label{branch2}
-    \end{minipage}
+        \includegraphics[scale=0.32]{img/branches2.jpg}
+    \end{minipage}    
+    \caption{Examples of branches}
+    \label{branch}
 \end{figure}
+When working on other project or bigger, before merge with the main project must use a \textbf{poll request}, that will be accepted by the owner of the project if approved.
+
+
+
 
 \subsubsection{.gitingore file}
 This particular file, create in the git folder allow to create a list of file, of type of file (like all the file with ,mw) that will \textbf{NOT} committed on GitHub. 
@@ -143,9 +164,11 @@ Website that allow to store commit and allow team project:
 Some useful comand to known in powershell: 
 \begin{itemize}
     \item Get-ChildItem -Path . -Hidden : To shows hidden element in folder
-    \item New-Item -ItemType File -Path $<>$ : To create a file <name> in the folder
+    \item New-Item -ItemType File -Path $<>$ : To create a file \textless name\textgreater in the folder
     \item echo "hello world" $>>$ file.txt: create a file.txt with the line hello world   
 \end{itemize}
+
+
 
 
 
