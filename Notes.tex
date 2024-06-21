@@ -159,6 +159,17 @@ Website that allow to store commit and allow team project:
     \end{itemize}
 \end{enumerate}
 
+\subsection{delete file from GitHub}
+Thus section shows how remove file already on GitHub:
+\begin{enumerate}
+    \item Go in the repository folder (in powershell run as administrator)ù
+    \item git pull to recall last version
+    \item git rm --cached \textless FileName \textgreater (remember extension) in case of directory use -r option before specify directory 
+    \item git commit -m "delete file"
+    \item modify .gitignore to not commit again 
+    \item git add . then git commit -m "commit with updated .gitignore"
+    \item git pull and check correctness  
+\end{enumerate}
 
 \section{Powershell command} 
 Some useful comand to known in powershell: 
